@@ -4,35 +4,360 @@
 
 <head>
 
-    <title>Admin Dashboard</title>
+    <title>
+        Admin Dashboard
+    </title>
+
+    <!-- BOOTSTRAP -->
+
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+
+        body {
+
+            background: #f4f7fc;
+        }
+
+        .sidebar {
+
+            height: 100vh;
+
+            background: linear-gradient(
+                    180deg,
+                    #0d6efd,
+                    #0b5ed7
+            );
+
+            color: white;
+
+            padding: 25px;
+        }
+
+        .sidebar h2 {
+
+            font-weight: bold;
+
+            margin-bottom: 35px;
+        }
+
+        .sidebar a {
+
+            display: block;
+
+            color: white;
+
+            text-decoration: none;
+
+            padding: 14px;
+
+            border-radius: 12px;
+
+            margin-bottom: 12px;
+
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+
+            background: rgba(255,255,255,0.2);
+        }
+
+        .content {
+
+            padding: 35px;
+        }
+
+        .dashboard-card {
+
+            border: none;
+
+            border-radius: 22px;
+
+            transition: 0.3s;
+
+            cursor: pointer;
+
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .dashboard-card:hover {
+
+            transform: translateY(-6px);
+
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .dashboard-icon {
+
+            font-size: 45px;
+
+            margin-bottom: 15px;
+
+            color: #0d6efd;
+        }
+
+        .top-banner {
+
+            background: linear-gradient(
+                    135deg,
+                    #0d6efd,
+                    #3d8bfd
+            );
+
+            color: white;
+
+            border-radius: 20px;
+
+            padding: 35px;
+
+            margin-bottom: 30px;
+        }
+
+    </style>
 
 </head>
 
 <body>
 
-<h1>
-    ADMIN DASHBOARD
-</h1>
+<div class="container-fluid">
 
-<ul>
+    <div class="row">
 
-    <li>
-        Quản lý thiết bị
-    </li>
+        <!-- SIDEBAR -->
 
-    <li>
-        Duyệt yêu cầu mượn
-    </li>
+        <div class="col-md-2 sidebar">
 
-    <li>
-        Quản lý khoa/ngành
-    </li>
+            <h2>
+                Admin
+            </h2>
 
-</ul>
+            <a th:href="@{/admin/dashboard}">
 
-<a th:href="@{/logout}">
-    Logout
-</a>
+                <i class="fa-solid fa-house"></i>
+
+                Dashboard
+
+            </a>
+
+            <a th:href="@{/admin/profile}">
+
+                <i class="fa-solid fa-user"></i>
+
+                My Profile
+
+            </a>
+
+            <a href="#">
+
+                <i class="fa-solid fa-laptop"></i>
+
+                Equipment Management
+
+            </a>
+
+            <a href="#">
+
+                <i class="fa-solid fa-check"></i>
+
+                Borrow Approval
+
+            </a>
+
+            <a href="#">
+
+                <i class="fa-solid fa-building"></i>
+
+                Departments
+
+            </a>
+
+            <a href="#">
+
+                <i class="fa-solid fa-flask"></i>
+
+                Lab Room Types
+
+            </a>
+
+            <a th:href="@{/logout}">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                Logout
+
+            </a>
+
+        </div>
+
+        <!-- CONTENT -->
+
+        <div class="col-md-10 content">
+
+            <!-- TOP BANNER -->
+
+            <div class="top-banner">
+
+                <h1>
+                    Welcome Administrator 👑
+                </h1>
+
+                <p class="mt-3">
+
+                    Manage lab systems, approve equipment borrowing,
+                    and maintain academic resources efficiently.
+
+                </p>
+
+            </div>
+
+            <!-- DASHBOARD CARDS -->
+
+            <div class="row g-4">
+
+                <!-- EQUIPMENT -->
+
+                <div class="col-md-4">
+
+                    <div class="card dashboard-card p-4 text-center">
+
+                        <div class="dashboard-icon">
+
+                            <i class="fa-solid fa-laptop"></i>
+
+                        </div>
+
+                        <h4>
+                            Equipment Management
+                        </h4>
+
+                        <p>
+                            Manage devices and lab resources
+                        </p>
+
+                        <a
+                                href="#"
+                                class="btn btn-primary">
+
+                            Open
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <!-- BORROW -->
+
+                <div class="col-md-4">
+
+                    <div class="card dashboard-card p-4 text-center">
+
+                        <div class="dashboard-icon">
+
+                            <i class="fa-solid fa-check"></i>
+
+                        </div>
+
+                        <h4>
+                            Borrow Approval
+                        </h4>
+
+                        <p>
+                            Approve equipment borrowing requests
+                        </p>
+
+                        <a
+                                href="#"
+                                class="btn btn-success">
+
+                            Open
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <!-- DEPARTMENT -->
+
+                <div class="col-md-4">
+
+                    <div class="card dashboard-card p-4 text-center">
+
+                        <div class="dashboard-icon">
+
+                            <i class="fa-solid fa-building"></i>
+
+                        </div>
+
+                        <h4>
+                            Departments
+                        </h4>
+
+                        <p>
+                            Manage faculties and departments
+                        </p>
+
+                        <a
+                                href="#"
+                                class="btn btn-dark">
+
+                            Open
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <!-- LAB TYPES -->
+
+                <div class="col-md-4">
+
+                    <div class="card dashboard-card p-4 text-center">
+
+                        <div class="dashboard-icon">
+
+                            <i class="fa-solid fa-flask"></i>
+
+                        </div>
+
+                        <h4>
+                            Lab Room Types
+                        </h4>
+
+                        <p>
+                            Manage categories of laboratory rooms
+                        </p>
+
+                        <a
+                                href="#"
+                                class="btn btn-warning text-white">
+
+                            Open
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
 
 </body>
 

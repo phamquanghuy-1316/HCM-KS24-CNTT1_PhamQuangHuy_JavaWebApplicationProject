@@ -1,6 +1,7 @@
 package com.re.project.controller;
 
 import com.re.project.entity.UserProfile;
+
 import com.re.project.service.UserProfileService;
 
 import lombok.RequiredArgsConstructor;
@@ -17,26 +18,26 @@ import org.springframework.web.bind.annotation.PostMapping;
 @RequiredArgsConstructor
 public class ProfileController {
 
-    private final UserProfileService profileService;
+    private final UserProfileService
+            profileService;
 
-    // SHOW PROFILE
+    // =========================
+    // STUDENT PROFILE
+    // =========================
+
     @GetMapping("/student/profile")
     public String studentProfile(Model model) {
 
-        UserProfile profile =
-                profileService.getCurrentProfile();
-
         model.addAttribute(
                 "profile",
-                profile
+                profileService.getCurrentProfile()
         );
 
         return "student/profile";
     }
 
-    // SAVE PROFILE
     @PostMapping("/student/profile")
-    public String saveProfile(
+    public String saveStudentProfile(
 
             @ModelAttribute("profile")
             UserProfile profile
@@ -45,6 +46,62 @@ public class ProfileController {
 
         profileService.save(profile);
 
-        return "redirect:/student/profile";
+        return "redirect:/student/profile?success";
+    }
+
+    // =========================
+    // LECTURER PROFILE
+    // =========================
+
+    @GetMapping("/lecturer/profile")
+    public String lecturerProfile(Model model) {
+
+        model.addAttribute(
+                "profile",
+                profileService.getCurrentProfile()
+        );
+
+        return "lecturer/profile";
+    }
+
+    @PostMapping("/lecturer/profile")
+    public String saveLecturerProfile(
+
+            @ModelAttribute("profile")
+            UserProfile profile
+
+    ) {
+
+        profileService.save(profile);
+
+        return "redirect:/lecturer/profile?success";
+    }
+
+    // =========================
+    // ADMIN PROFILE
+    // =========================
+
+    @GetMapping("/admin/profile")
+    public String adminProfile(Model model) {
+
+        model.addAttribute(
+                "profile",
+                profileService.getCurrentProfile()
+        );
+
+        return "admin/profile";
+    }
+
+    @PostMapping("/admin/profile")
+    public String saveAdminProfile(
+
+            @ModelAttribute("profile")
+            UserProfile profile
+
+    ) {
+
+        profileService.save(profile);
+
+        return "redirect:/admin/profile?success";
     }
 }

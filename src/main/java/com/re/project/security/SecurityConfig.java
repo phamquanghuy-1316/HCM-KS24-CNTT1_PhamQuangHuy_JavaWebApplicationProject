@@ -21,8 +21,6 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    // SECURITY CONFIG
-
     @Bean
     public SecurityFilterChain securityFilterChain(
             HttpSecurity http
@@ -34,14 +32,15 @@ public class SecurityConfig {
 
                 .csrf(csrf -> csrf.disable())
 
-                // ALLOW ALL REQUESTS
+                // ALLOW ALL
 
                 .authorizeHttpRequests(auth -> auth
 
-                        .anyRequest().permitAll()
+                        .anyRequest()
+                        .permitAll()
                 )
 
-                // DISABLE SPRING SECURITY LOGIN
+                // DISABLE SPRING LOGIN
 
                 .formLogin(form -> form.disable())
 

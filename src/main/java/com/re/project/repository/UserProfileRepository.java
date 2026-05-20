@@ -2,6 +2,7 @@ package com.re.project.repository;
 
 import com.re.project.entity.User;
 import com.re.project.entity.UserProfile;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
