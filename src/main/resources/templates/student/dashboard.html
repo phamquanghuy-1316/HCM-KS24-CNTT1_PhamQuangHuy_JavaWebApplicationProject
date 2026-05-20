@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <title>Student Dashboard</title>
+
+</head>
+
+<body>
+
+<h1>
+    STUDENT DASHBOARD
+</h1>
+
+<ul>
+
+    <li>
+        <a th:href="@{/student/profile}">
+            My Profile
+        </a>
+    </li>
+
+    <li>
+        Đặt lịch cố vấn
+    </li>
+
+    <li>
+        Hủy lịch
+    </li>
+
+    <li>
+        Lịch sử học tập
+    </li>
+
+</ul>
+
+<a th:href="@{/logout}">
+    Logout
+</a>
+
+</body>
+
+</html>

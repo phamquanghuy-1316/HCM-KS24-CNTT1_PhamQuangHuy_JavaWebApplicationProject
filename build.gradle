@@ -1,0 +1,50 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '4.0.6'
+    id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.re'
+version = '0.0.1-SNAPSHOT'
+description = 'project'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    // Spring Boot Web
+    implementation("org.springframework.boot:spring-boot-starter-web")
+
+    // Thymeleaf
+    implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
+
+    // Spring Security
+    implementation("org.springframework.boot:spring-boot-starter-security")
+
+    // Spring Data JPA
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    // MySQL
+    runtimeOnly("com.mysql:mysql-connector-j")
+
+    // Lombok
+    compileOnly("org.projectlombok:lombok")
+    annotationProcessor("org.projectlombok:lombok")
+
+    testCompileOnly("org.projectlombok:lombok")
+    testAnnotationProcessor("org.projectlombok:lombok")
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
