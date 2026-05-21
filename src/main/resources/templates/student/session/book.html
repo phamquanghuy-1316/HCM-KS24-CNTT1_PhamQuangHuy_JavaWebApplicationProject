@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <title>
+        Book Mentoring Session
+    </title>
+
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+
+</head>
+
+<body class="bg-light">
+
+<div class="container mt-5">
+
+    <div class="card p-4">
+
+        <h2>
+            Book Mentoring Session
+        </h2>
+
+        <div
+                th:if="${error}"
+                class="alert alert-danger">
+
+            <span th:text="${error}"></span>
+
+        </div>
+
+        <div
+                th:if="${param.success}"
+                class="alert alert-success">
+
+            Booking success
+
+        </div>
+
+        <form
+                th:action="@{/student/session/book}"
+                th:object="${request}"
+                method="post">
+
+            <!-- DEPARTMENT -->
+
+            <div class="mb-3">
+
+                <label>
+                    Department
+                </label>
+
+                <select
+                        th:field="*{departmentId}"
+                        class="form-select">
+
+                    <option value="">
+                        Select Department
+                    </option>
+
+                    <option
+                            th:each="d : ${departments}"
+
+                            th:value="${d.id}"
+
+                            th:text="${d.name}">
+                    </option>
+
+                </select>
+
+            </div>
+
+            <!-- LECTURER -->
+
+            <div class="mb-3">
+
+                <label>
+                    Lecturer ID
+                </label>
+
+                <input
+                        type="number"
+                        th:field="*{lecturerId}"
+                        class="form-control">
+
+            </div>
+
+            <!-- DATE -->
+
+            <div class="mb-3">
+
+                <label>
+                    Date
+                </label>
+
+                <input
+                        type="date"
+                        th:field="*{sessionDate}"
+                        class="form-control">
+
+            </div>
+
+            <!-- TIME -->
+
+            <div class="mb-3">
+
+                <label>
+                    Time
+                </label>
+
+                <input
+                        type="time"
+                        th:field="*{sessionTime}"
+                        class="form-control">
+
+            </div>
+
+            <!-- NOTE -->
+
+            <div class="mb-3">
+
+                <label>
+                    Note
+                </label>
+
+                <textarea
+                        th:field="*{note}"
+                        class="form-control">
+                </textarea>
+
+            </div>
+
+            <button class="btn btn-primary">
+
+                Book Session
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
