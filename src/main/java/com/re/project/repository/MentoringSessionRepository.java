@@ -2,15 +2,17 @@ package com.re.project.repository;
 
 import com.re.project.entity.MentoringSession;
 
+import com.re.project.entity.SessionStatus;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import java.util.List;
+
 public interface MentoringSessionRepository
         extends JpaRepository<MentoringSession, Long> {
-
-    // CHECK LECTURER CONFLICT
 
     boolean existsByLecturer_IdAndSessionDateAndSessionTime(
 
@@ -21,8 +23,6 @@ public interface MentoringSessionRepository
             LocalTime sessionTime
     );
 
-    // CHECK STUDENT CONFLICT
-
     boolean existsByStudent_IdAndSessionDateAndSessionTime(
 
             Long studentId,
@@ -30,5 +30,10 @@ public interface MentoringSessionRepository
             LocalDate sessionDate,
 
             LocalTime sessionTime
+    );
+
+    List<MentoringSession>
+    findByStatus(
+            SessionStatus status
     );
 }

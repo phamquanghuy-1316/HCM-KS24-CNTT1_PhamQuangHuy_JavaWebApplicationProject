@@ -1,10 +1,10 @@
 package com.re.project.entity;
 
-public enum SessionStatus {
+public enum BorrowingStatus {
 
     PENDING,
 
-    COMPLETED,
+    EXPORTED,
 
     CANCELLED
 }

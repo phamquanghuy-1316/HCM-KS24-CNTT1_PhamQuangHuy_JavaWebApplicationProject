@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <title>
+        Evaluate Session
+    </title>
+
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+
+</head>
+
+<body class="bg-light">
+
+<div class="container py-5">
+
+    <div class="card shadow p-5">
+
+        <h2 class="mb-4 text-primary">
+
+            Evaluate Student
+
+        </h2>
+
+        <!-- SUCCESS -->
+
+        <div
+                th:if="${success}"
+
+                class="alert alert-success"
+
+                th:text="${success}">
+
+        </div>
+
+        <!-- ERROR -->
+
+        <div
+                th:if="${error}"
+
+                class="alert alert-danger"
+
+                th:text="${error}">
+
+        </div>
+
+        <form
+
+                th:action="@{/lecturer/evaluate}"
+
+                th:object="${request}"
+
+                method="post">
+
+            <!-- SESSION -->
+
+            <div class="mb-3">
+
+                <label class="form-label">
+
+                    Session
+
+                </label>
+
+                <select
+
+                        th:field="*{sessionId}"
+
+                        class="form-select">
+
+                    <option
+                            th:each="s : ${sessions}"
+
+                            th:value="${s.id}"
+
+                            th:text="${s.student.username} + ' - ' + ${s.sessionDate}">
+
+                    </option>
+
+                </select>
+
+            </div>
+
+            <!-- SCORE -->
+
+            <div class="mb-3">
+
+                <label class="form-label">
+
+                    Score
+
+                </label>
+
+                <input
+                        type="number"
+
+                        th:field="*{score}"
+
+                        class="form-control">
+            </div>
+
+            <!-- EVALUATION -->
+
+            <div class="mb-3">
+
+                <label class="form-label">
+
+                    Evaluation
+
+                </label>
+
+                <textarea
+
+                        th:field="*{evaluation}"
+
+                        class="form-control">
+
+                </textarea>
+
+            </div>
+
+            <!-- EQUIPMENT -->
+
+            <div class="mb-3">
+
+                <label class="form-label">
+
+                    Equipment
+
+                </label>
+
+                <select
+
+                        th:field="*{equipmentId}"
+
+                        class="form-select">
+
+                    <option
+                            th:each="e : ${equipments}"
+
+                            th:value="${e.id}"
+
+                            th:text="${e.name}">
+
+                    </option>
+
+                </select>
+
+            </div>
+
+            <!-- QUANTITY -->
+
+            <div class="mb-4">
+
+                <label class="form-label">
+
+                    Quantity
+
+                </label>
+
+                <input
+                        type="number"
+
+                        th:field="*{quantity}"
+
+                        class="form-control">
+
+            </div>
+
+            <button
+                    class="btn btn-primary w-100">
+
+                Save Evaluation
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
